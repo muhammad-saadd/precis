@@ -130,6 +130,40 @@ Files you didn't ask for are files you have to manage. Plans live in the convers
 
 ---
 
+## How precis compares
+
+If you've used other Claude Code workflow plugins, here's the concrete difference:
+
+### vs. superpowers
+
+[superpowers](https://github.com/superpowers-ai/superpowers) has a powerful skill system, but it enforces a skill check before **every message** — including clarifying questions. The "1% rule" means you're constantly paying overhead even when the answer is obviously just "yes". precis activates on context, not on ceremony.
+
+| | superpowers | precis |
+|--|------------|--------|
+| Pre-flight check | Every message | Never |
+| Skill taxonomy | 30+ skills | 6 workflows |
+| Escape hatch | None | `--quick` on everything |
+| Trigger model | Mandatory lookup | Silent context detection |
+| File footprint | Plugin + hooks | One CLAUDE.md |
+
+### vs. GSD (Get Shit Done)
+
+[GSD](https://github.com/superpowers-ai/gsd) is excellent for long-running projects with clear milestones. It becomes overhead for anything smaller — it deploys a 4-agent pipeline (researcher → planner → verifier → executor) for tasks that need 10 lines of code, and leaves `.planning/` directories, `PLAN.md`, `RESEARCH.md`, and `STATE.md` throughout your repo.
+
+| | GSD | precis |
+|--|-----|--------|
+| Planning model | Phases + milestones + roadmaps | Flat numbered list |
+| Agent overhead | 4 agents per phase | Zero agents |
+| File footprint | `.planning/` directories + multiple .md files | Nothing written unless you ask |
+| Best for | Multi-month projects | Every project |
+| Process trigger | Always waterfall-first | Scales to task size |
+
+### The short version
+
+Use GSD if you're managing a multi-month project with multiple people and want structured phase tracking. Use superpowers if you want broad workflow coverage and don't mind the overhead. Use precis if you want the discipline without the ceremony.
+
+---
+
 ## Philosophy
 
 precis is built on one observation: the best AI development workflows scale to the task. A bugfix should get zero overhead. A new system should get full discipline. Most tools pick one and apply it universally.
