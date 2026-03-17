@@ -2,7 +2,7 @@
 set -euo pipefail
 
 PRECIS_VERSION="1.0.0"
-PRECIS_REPO="YOUR_USERNAME/precis"
+PRECIS_REPO="muhammad-saadd/precis"
 CLAUDE_MD_URL="https://raw.githubusercontent.com/${PRECIS_REPO}/main/CLAUDE.md"
 TARGET="$(pwd)/CLAUDE.md"
 

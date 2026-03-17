@@ -12,12 +12,12 @@ Six focused workflows. Zero overhead for simple tasks. One escape hatch for when
 
 **Claude Code:**
 ```bash
-claude plugins install github:YOUR_USERNAME/precis
+claude plugins install github:muhammad-saadd/precis
 ```
 
 **Any agent (Cursor, Copilot, Gemini CLI):**
 ```bash
-curl -fsSL https://raw.githubusercontent.com/YOUR_USERNAME/precis/main/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/muhammad-saadd/precis/main/install.sh | sh
 ```
 This drops a single `CLAUDE.md` into your project. That's it.
 
