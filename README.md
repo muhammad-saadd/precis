@@ -130,37 +130,25 @@ Files you didn't ask for are files you have to manage. Plans live in the convers
 
 ---
 
-## How precis compares
+## How precis compares to other Claude Code plugins
 
-If you've used other Claude Code workflow plugins, here's the concrete difference:
+Most Claude Code workflow plugins fall into one of two camps:
 
-### vs. superpowers
+**Skill-system plugins** — large taxonomies of 20-30+ skills with mandatory pre-flight checks before every message. Great coverage on paper; friction in practice. When every interaction starts with a workflow lookup, the overhead becomes the product.
 
-[superpowers](https://github.com/superpowers-ai/superpowers) has a powerful skill system, but it enforces a skill check before **every message** — including clarifying questions. The "1% rule" means you're constantly paying overhead even when the answer is obviously just "yes". precis activates on context, not on ceremony.
+**Project management plugins** — phased planning pipelines with roadmaps, milestones, multi-agent research/plan/verify/execute chains, and persistent state directories scattered through your repo. Excellent for long multi-month initiatives. Overkill for anything smaller.
 
-| | superpowers | precis |
-|--|------------|--------|
-| Pre-flight check | Every message | Never |
-| Skill taxonomy | 30+ skills | 6 workflows |
-| Escape hatch | None | `--quick` on everything |
-| Trigger model | Mandatory lookup | Silent context detection |
-| File footprint | Plugin + hooks | One CLAUDE.md |
+| | Skill-system plugins | Project management plugins | precis |
+|--|---------------------|--------------------------|--------|
+| Trigger model | Mandatory pre-flight on every message | Always plan-first | Silent context detection |
+| Overhead on a bugfix | High — lookup required | High — plan required | Zero |
+| Overhead on a new system | High — lookup required | Appropriate | Appropriate |
+| Skill/workflow count | 20–30+ | ~10 commands | 6 workflows |
+| Escape hatch | None or limited | Limited | `--quick` on everything |
+| File footprint | Plugin + hooks | `.planning/` dirs + multiple state files | Nothing written unless you ask |
+| Best for | Teams wanting broad coverage | Multi-month structured projects | Day-to-day engineering at any scale |
 
-### vs. GSD (Get Shit Done)
-
-[GSD](https://github.com/superpowers-ai/gsd) is excellent for long-running projects with clear milestones. It becomes overhead for anything smaller — it deploys a 4-agent pipeline (researcher → planner → verifier → executor) for tasks that need 10 lines of code, and leaves `.planning/` directories, `PLAN.md`, `RESEARCH.md`, and `STATE.md` throughout your repo.
-
-| | GSD | precis |
-|--|-----|--------|
-| Planning model | Phases + milestones + roadmaps | Flat numbered list |
-| Agent overhead | 4 agents per phase | Zero agents |
-| File footprint | `.planning/` directories + multiple .md files | Nothing written unless you ask |
-| Best for | Multi-month projects | Every project |
-| Process trigger | Always waterfall-first | Scales to task size |
-
-### The short version
-
-Use GSD if you're managing a multi-month project with multiple people and want structured phase tracking. Use superpowers if you want broad workflow coverage and don't mind the overhead. Use precis if you want the discipline without the ceremony.
+precis takes the best parts of both — workflow discipline from skill-system plugins, planning rigor from project management plugins — and cuts everything that creates friction without adding value.
 
 ---
 
